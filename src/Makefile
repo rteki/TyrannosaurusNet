@@ -3,10 +3,10 @@ ifndef PLUGINS_DIR
 	export PLUGINS_DIR=$(BUILD_DIR)/plugins
 endif
 
-all: services main
+all: main servicesTarget 
 	mv TyrannosaurusNet $(BUILD_DIR)/
 
-services: services/Makefile
+servicesTarget: services/Makefile
 	cd services; make
 
 
