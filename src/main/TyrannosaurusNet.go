@@ -2,14 +2,11 @@ package main
 
 import (
 	"interfaces"
-	"plugin"
 )
 
 func main() {
-	plug, _ := plugin.Open("plugins/ServicesManager.so")
-	sim, _ := plug.Lookup("NewServiceManager")
+	s := interfaces.LoadServiceFromPlugin("./plugins/ServicesManager.so")
 
-	a := sim.(func() interfaces.Service)()
-
-	a.Run()
+	s.Run()
+	s.Stop()
 }
