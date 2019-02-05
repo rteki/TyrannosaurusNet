@@ -1,4 +1,4 @@
 CURRENT_DIR_NAME = `pwd|sed "s/.\+\///g"`
 
 all:
-	go build -buildmode=plugin -o $(PLUGINS_DIR)/$(CURRENT_DIR_NAME).so $(CURRENT_DIR_NAME).go
+	go build -buildmode=plugin -o $(PLUGINS_DIR)/$(CURRENT_DIR_NAME).so services/ServicesManager

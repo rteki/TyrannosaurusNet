@@ -10,8 +10,8 @@ servicesTarget: services/Makefile
 	cd services; make
 
 
-main: TyrannosaurusNet.go
-	go build TyrannosaurusNet.go
+main: main/TyrannosaurusNet.go
+	go build -o TyrannosaurusNet main 
 
 clean:
 	rm -rf $(BUILD_DIR)
