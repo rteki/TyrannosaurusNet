@@ -1,13 +1,23 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"interfaces"
+)
 
-func Run() {
+type ServiceManager string
+
+func (s ServiceManager) Run() {
 	fmt.Print("Hello test")
 }
 
-func Stop() {
+func (s ServiceManager) Stop() {
 
 }
 
 func main() {}
+
+func NewServiceManager() interfaces.Service {
+	var s ServiceManager
+	return s
+}

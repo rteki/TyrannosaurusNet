@@ -1,16 +1,15 @@
 package main
 
 import (
-	"fmt"
+	"interfaces"
 	"plugin"
 )
 
 func main() {
 	plug, _ := plugin.Open("plugins/ServicesManager.so")
-	sym, _ := plug.Lookup("Run")
+	sim, _ := plug.Lookup("NewServiceManager")
 
-	fmt.Println()
+	a := sim.(func() interfaces.Service)()
 
-	sym.(func())()
-
+	a.Run()
 }
