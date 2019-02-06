@@ -18,7 +18,7 @@ func (s ServiceManager) Stop() {
 func main() {}
 
 func constructor() interfaces.Service {
-	var s ServiceManager
+	s := new(ServiceManager)
 	return s
 }
 

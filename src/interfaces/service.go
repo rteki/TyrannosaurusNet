@@ -1,6 +1,7 @@
 package interfaces
 
 import (
+	"fmt"
 	"plugin"
 )
 
@@ -12,10 +13,22 @@ type Service interface {
 type ServiceConstructor func() Service
 
 func LoadServiceFromPlugin(path string) Service {
-	plug, _ := plugin.Open(path)
-	sim, _ := plug.Lookup("New")
 
-	New := sim.((*ServiceConstructor))
+	plug, plugErr := plugin.Open(path)
 
-	return (*New)()
+	if plugErr != nil {
+		fmt.Printf("Plugin load error:\n%s", plugErr)
+	}
+
+	sym, symErr := plug.Lookup("New")
+
+	if symErr != nil {
+		fmt.Printf("Symbol load error:\n%s", symErr)
+	}
+
+	New := sym.((*ServiceConstructor))
+
+	service := (*New)()
+
+	return service
 }
