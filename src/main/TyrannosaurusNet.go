@@ -1,12 +1,24 @@
 package main
 
 import (
-	"interfaces"
+	"compress/gzip"
+	"fmt"
+	"libs/FileSystemSerializer"
 )
 
-func main() {
-	s := interfaces.LoadServiceFromPlugin("./plugins/ServicesManager.so")
+type ss string
 
-	s.Run()
-	s.Stop()
+func (s ss) Write(b []byte) (int, error) {
+	fmt.Print(b)
+	return len(b), nil
+}
+
+func main() {
+	var s ss
+
+	compressor := gzip.NewWriter(s)
+	defer compressor.Close()
+
+	FileSystemSerializer.Serialize("../src", compressor)
+
 }
