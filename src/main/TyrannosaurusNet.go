@@ -1,12 +1,21 @@
 package main
 
 import (
-	"interfaces"
+	"interfaces/service"
+	"interfaces/serviceManager"
+	"sync"
 )
 
 func main() {
-	s := interfaces.LoadServiceFromPlugin("./plugins/ServicesManager.so")
+	sm := service.LoadServiceFromPlugin("./plugins/ServiceManager.so")
 
-	s.Run()
-	s.Stop()
+	serverStopWG := new(sync.WaitGroup)
+
+	serverStopWG.Add(1)
+
+	sm.Run()
+
+	serviceManager.RunService(sm.GetCtrl(), "plugins/Service.so")
+
+	serverStopWG.Wait()
 }
