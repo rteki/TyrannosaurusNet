@@ -1,24 +1,21 @@
 package main
 
 import (
-	"compress/gzip"
-	"fmt"
-	"libs/FileSystemSerializer"
+	"interfaces/service"
+	"interfaces/serviceManager"
+	"sync"
 )
 
-type ss string
-
-func (s ss) Write(b []byte) (int, error) {
-	fmt.Print(b)
-	return len(b), nil
-}
-
 func main() {
-	var s ss
+	sm := service.LoadServiceFromPlugin("./plugins/ServiceManager.so")
 
-	compressor := gzip.NewWriter(s)
-	defer compressor.Close()
+	serverStopWG := new(sync.WaitGroup)
 
-	FileSystemSerializer.Serialize("../src", compressor)
+	serverStopWG.Add(1)
 
+	sm.Run()
+
+	serviceManager.RunService(sm.GetCtrl(), "plugins/Service.so")
+
+	serverStopWG.Wait()
 }

@@ -1,4 +1,4 @@
-package interfaces
+package service
 
 import (
 	"fmt"
@@ -8,7 +8,18 @@ import (
 type Service interface {
 	Run()
 	Stop()
+	GetName() string
+	GetCtrl() *CtrlChanel
 }
+
+type CtrlChanel chan CtrlChanelCmd
+
+type CtrlChanelCmd struct {
+	Id     int
+	Params []string
+}
+
+type KillChanel chan struct{}
 
 type ServiceConstructor func() Service
 
