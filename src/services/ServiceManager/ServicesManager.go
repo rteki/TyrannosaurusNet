@@ -10,6 +10,7 @@ type ServiceManager struct {
 	managedServices []*service.Service
 	stopchan        service.KillChanel
 	ctrl            service.CtrlChanel
+	ctrls           map[string]func(service.CtrlChanelParams)
 }
 
 func (sm *ServiceManager) Run() {
@@ -36,6 +37,8 @@ func main() {}
 func constructor() service.Service {
 	sm := new(ServiceManager)
 	sm.serviceName = "ServiceManager"
+	sm.ctrls = make(map[string]func(service.CtrlChanelParams))
+	sm.ctrls["runService"] = sm.runService
 	return sm
 }
 

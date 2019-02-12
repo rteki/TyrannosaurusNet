@@ -14,9 +14,13 @@ type Service interface {
 
 type CtrlChanel chan CtrlChanelCmd
 
+type CtrlChanelParam string
+
+type CtrlChanelParams []CtrlChanelParam
+
 type CtrlChanelCmd struct {
-	Id     int
-	Params []string
+	Id     string
+	Params CtrlChanelParams
 }
 
 type KillChanel chan struct{}

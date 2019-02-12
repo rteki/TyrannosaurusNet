@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"interfaces/serviceManager"
+	"interfaces/service"
 )
 
 func (sm *ServiceManager) service() {
@@ -10,12 +10,7 @@ func (sm *ServiceManager) service() {
 		select {
 		case cmd := <-sm.ctrl:
 			{
-				switch cmd.Id {
-				case serviceManager.RUN_SERVICE_CMD:
-					{
-						sm.cmdRunService(cmd.Params[0])
-					}
-				}
+				sm.ctrls[cmd.Id](cmd.Params)
 			}
 		default:
 			{
@@ -29,6 +24,6 @@ func (sm *ServiceManager) service() {
 	}
 }
 
-func (sm *ServiceManager) cmdRunService(serviceSOName string) {
-	fmt.Println("Run Service", serviceSOName)
+func (sm *ServiceManager) runService(args service.CtrlChanelParams) {
+	fmt.Println("Run Service", args[0])
 }

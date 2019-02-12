@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Go Away!</title>
+</head>
+<body>
+    <div style="max-width: 500px; margin:auto;">
+        <img src="../imgs/logo.png" width="100%"></img><br>
+        <center><h1>Go Away!</h1></center>
+    </div>
+    <script>
+        let body = document.getElementsByTagName("body")[0];
+        const colors = [
+            "LightPink",
+            "HotPink",
+            "DeepPink",
+            "PaleViolet",
+            "MediumViolet",
+            "LightSalmon",
+            "DarkSalmon",
+            "LightCoral",
+            "IndianRed",
+            "DarkRed",
+            "OrangeRed",
+            "DarkOrange",
+            "LightYellow",
+            "LemonChiffon",
+            "LightGoldenrod",
+            "PapayaWhip",
+            "PeachPuff",
+            "PaleGoldenrod",
+            "DarkKhaki",
+            "BlanchedAlmond",
+            "NavajoWhite",
+            "RosyBrown",
+            "SandyBrown",
+            "DarkGoldenrod",
+            "SaddleBrown",
+            "DarkOlive",
+            "OliveDrab",
+            "YellowGreen",
+            "LimeGreen",
+            "LawnGreen",
+            "GreenYellow",
+            "SpringGreen",
+            "MediumSpring",
+            "LightGreen",
+            "PaleGreen",
+            "DarkSea",
+            "MediumAquamarine",
+            "MediumSea",
+            "SeaGreen",
+            "ForestGreen",
+            "DarkGreen",
+            "LightCyan",
+            "PaleTurquoise",
+            "MediumTurquoise",
+            "DarkTurquoise",
+            "LightSea",
+            "CadetBlue",
+            "DarkCyan",
+            "LightSteel",
+            "PowderBlue",
+            "LightBlue",
+            "SkyBlue",
+            "LightSky",
+            "DeepSky",
+            "DodgerBlue",
+            "CornflowerBlue",
+            "SteelBlue",
+            "RoyalBlue",
+            "MediumBlue",
+            "DarkBlue",
+            "MidnightBlue",
+            "MediumOrchid",
+            "MediumPurple",
+            "BlueViolet",
+            "DarkViolet",
+            "DarkOrchid",
+            "DarkMagenta",
+            "DarkSlate",
+            "SlateBlue",
+            "MediumSlate",
+            "MintCream",
+            "AliceBlue",
+            "GhostWhite",
+            "WhiteSmoke",
+            "OldLace",
+            "FloralWhite",
+            "AntiqueWhite",
+            "LavenderBlush",
+            "MistyRose"];
+        
+        let colorIndex = 0;
+        setInterval(()=>{
+            colorIndex++;
+            body.style.backgroundColor = colors[colorIndex % colors.length]
+        }, 100);
+    </script>
+</body>
+</html>
