@@ -15,7 +15,7 @@ func main() {
 
 	sm.Run()
 
-	serviceManager.RunService(sm.GetCtrl(), "plugins/Service.so")
+	serviceManager.RunService(sm.GetCtrl(), "plugins/HttpServer.so")
 
 	serverStopWG.Wait()
 }

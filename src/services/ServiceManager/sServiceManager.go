@@ -25,5 +25,8 @@ func (sm *ServiceManager) service() {
 }
 
 func (sm *ServiceManager) runService(args service.CtrlChanelParams) {
-	fmt.Println("Run Service", args[0])
+	s := service.LoadServiceFromPlugin(string(args[0]))
+	sm.managedServices = append(sm.managedServices, s)
+
+	s.Run()
 }

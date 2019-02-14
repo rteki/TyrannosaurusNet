@@ -3,15 +3,15 @@ ifndef PLUGINS_DIR
 	export PLUGINS_DIR=$(BUILD_DIR)/plugins
 endif
 
-all: main servicesTarget 
+all: main servicesTarget
 	mv TyrannosaurusNet $(BUILD_DIR)/
 
 servicesTarget: services/Makefile
-	cd services; make
+	cd services; make; cd ..
 
 
 main: main/TyrannosaurusNet.go
-	go build -o TyrannosaurusNet main 
+	go build -o TyrannosaurusNet main
 
 clean:
 	rm -rf $(BUILD_DIR)

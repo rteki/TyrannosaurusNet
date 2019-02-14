@@ -7,7 +7,7 @@ import (
 
 type ServiceManager struct {
 	serviceName     string
-	managedServices []*service.Service
+	managedServices []service.Service
 	stopchan        service.KillChanel
 	ctrl            service.CtrlChanel
 	ctrls           map[string]func(service.CtrlChanelParams)
