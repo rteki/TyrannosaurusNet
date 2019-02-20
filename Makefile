@@ -13,5 +13,12 @@ resourcesTarget: build
 start: all
 	cd build; ./TyrannosaurusNet
 
+genKeys:
+	openssl genrsa -out tServer.key 2048
+	openssl ecparam -genkey -name secp384r1 -out tServer.key
+	openssl req -new -x509 -sha256 -key tServer.key -out tServer.crt -days 7
+	mv tServer.key build/
+	mv tServer.crt build/
+
 clean:
 	rm -rf $(BUILD_DIR)

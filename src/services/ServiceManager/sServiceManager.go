@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"interfaces/service"
+	"time"
 )
 
 func (sm *ServiceManager) service() {
@@ -21,6 +22,7 @@ func (sm *ServiceManager) service() {
 				return
 			}
 		}
+		time.Sleep(time.Millisecond * 100)
 	}
 }
 

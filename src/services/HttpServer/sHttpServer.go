@@ -4,16 +4,21 @@ import (
 	"context"
 	"fmt"
 	"net/http"
+	"time"
 )
 
+const HTTP_ADDR = ":8080"
+
 func (hs *HttpServer) service() {
-	server := &http.Server{Addr: ":8080"}
-	// http.HandleFunc("/", httpHandler)
-	fs := http.FileServer(http.Dir("./resources/"))
-	http.Handle("/", fs)
+	server := &http.Server{Addr: HTTP_ADDR}
 
-	go server.ListenAndServe()
+	http.Handle("/", hs)
 
+	err := server.ListenAndServeTLS("tServer.crt", "tServer.key")
+	if err != nil {
+		fmt.Print(err)
+		return
+	}
 	for {
 		select {
 		case cmd := <-hs.ctrl:
@@ -30,17 +35,10 @@ func (hs *HttpServer) service() {
 				return
 			}
 		}
+		time.Sleep(time.Millisecond * 100)
 	}
 }
 
-// func httpHandler(response http.ResponseWriter, request *http.Request) {
-// 	file, err := os.Open("../resources/html/home.html")
-// 	request.
-// 	if err != nil {
-// 		fmt.Printf("Cant open html...\n")
-// 	}
-
-// 	io.Copy(response, file)
-
-// 	file.Close()
-// }
+func (hs *HttpServer) ServeHTTP(rsp http.ResponseWriter, req *http.Request) {
+	fmt.Printf(req.RemoteAddr)
+}

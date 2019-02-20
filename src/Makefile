@@ -7,11 +7,11 @@ all: servicesTarget mainTarget
 	mv TyrannosaurusNet $(BUILD_DIR)/
 
 servicesTarget: services/Makefile
-	cd services; make; cd ..
+	@cd services; make; cd ..
 
 
 mainTarget: main/TyrannosaurusNet.go
-	go build -o TyrannosaurusNet main
+	@go build -o TyrannosaurusNet main
 
 clean:
-	rm -rf $(BUILD_DIR)
+	@rm -rf $(BUILD_DIR)
