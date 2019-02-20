@@ -11,7 +11,7 @@ servicesTarget: services/Makefile
 
 
 mainTarget: main/TyrannosaurusNet.go
-	@go build -o TyrannosaurusNet main
+	go build -o TyrannosaurusNet tyrranosaurusNet
 
 clean:
 	@rm -rf $(BUILD_DIR)
