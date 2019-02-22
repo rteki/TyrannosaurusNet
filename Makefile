@@ -2,6 +2,9 @@ export BUILD_DIR=$(CURDIR)/build
 export PLUGINS_DIR=$(BUILD_DIR)/plugins
 export GOPATH=$(CURDIR)
 
+export MAIN_EXE_NAME=tNet
+export UPDATE_BUILDER_NAME=tBuilder
+
 all: srcTarget resourcesTarget
 
 srcTarget: src
