@@ -1,0 +1,60 @@
+.styleAuthBox {
+    height: 50%;
+    width: 30%;
+    border-radius: 20px;
+    animation-name: beating;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes beating {
+    0% {height: 50%; width: 30%;}
+    50% {height: 60%; width: 40%;}
+    100% {height: 50%; width: 30%;}
+}
+
+.styleAuthBox h1{
+    font-weight: 500;
+    font-size: 50px;
+    font-family: monospace;
+    color: white;
+    margin: 10px;
+}
+
+.styleAuthBox input[type="text"], .styleAuthBox input[type="password"] {
+    height: 30%;
+    width: 60%;
+    background: none;
+    margin: 4%;
+    text-align: center;
+    color: white;
+    padding: 2%;
+    border: 2px solid #1c313a;
+    border-radius: 20px;
+    outline: none;
+    font-family: monospace;
+    font-size: 20px;
+
+}
+
+
+.styleAuthBox input[type="text"]::placeholder, .styleAuthBox input[type="password"]::placeholder {
+    color: #bbbbbb;
+    font-family: monospace;
+}
+
+.styleAuthBox input[type="submit"], .styleAuthBox input[type="submit"] {
+    background: #455a64;
+    border: none;
+    font-family: monospace;
+    font-size: 20px;
+    outline: none;
+    margin: 1%;
+    width: 50%;
+    padding: 2px;
+    border-radius: 20px;
+}
+
+.styleAuthBox input[type="submit"]:active, .styleAuthBox input[type="submit"]:active {
+    width: 40%;
+}

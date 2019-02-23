@@ -14,7 +14,7 @@ resourcesTarget: build
 	cp -r resources ./build/resources
 
 start: all
-	cd build; ./TyrannosaurusNet
+	cd build; ./$(MAIN_EXE_NAME)
 
 genKeys:
 	openssl genrsa -out tServer.key 2048
